@@ -1,0 +1,65 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="RadioButtonWithLeftStatusStyle"
+           TargetType="{x:Type RadioButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="13"
+                                BorderBrush="Black"
+                                BorderThickness="1"
+                                Margin="0 0 2 0"
+                                x:Name="borderStatus" />
+
+                        <BulletDecorator Background="{TemplateBinding Background}"
+                                         Cursor="Hand"
+                                         Grid.Column="1">
+                            <!--Text element-->
+                            <Button Foreground="{TemplateBinding Foreground}"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    IsEnabled="False"
+                                    Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Content}"
+                                    FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=FontSize}" />
+                        </BulletDecorator>
+                    </Grid>
+
+                    <!--If item is checked, trigger the visibility of the mark-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="true">
+                            <!--If item is checked, trigger the visibility of the mark and change the color of the selected bullet into a darker gray for better highlighting-->
+                            <Setter Property="Background"
+                                    TargetName="borderStatus"
+                                    Value="Lime" />
+
+                            <Setter Property="FontWeight"
+                                    Value="DemiBold" />
+
+                            <Setter Property="FontSize"
+                                    Value="14" />
+
+                            <Setter Property="Foreground"
+                                    Value="Blue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Foreground"
+                        Value="#736f6d" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

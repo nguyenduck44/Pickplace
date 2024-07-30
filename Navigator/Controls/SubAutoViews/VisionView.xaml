@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="NavigatorMachine.Views.VisionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0"
+                Grid.Column="1"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="3">
+            <Image x:Name="imgDisplay"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Row 0 -->
+        <StackPanel Grid.Row="0" 
+                    Grid.RowSpan="3"
+                    Orientation="Vertical">
+            <Button x:Name="btnLoad" 
+                Content="Load Image" 
+                Click="BtnLoad_Click"
+                Margin="5"/>
+            <Button x:Name="btnGrayscale" 
+                Content="Grayscale" 
+                Click="BtnGrayscale_Click"
+                Margin="5"/>
+            <Button x:Name="btnROI" 
+                    Content="Tạo ROI"
+                    Click="btnROI_Click"
+                    Margin="5"/>
+            <Button x:Name="btnAdd" 
+                    Content="Add ROI"
+                    Click="btnAdd_Click"
+                    Margin="5"/>
+            <Button x:Name="btnDel" 
+                    Content="Del ROI"
+                    Click="btnDel_Click"
+                    Margin="5"/>
+            <Button x:Name="btnCheck" 
+                    Content="Check"
+                    Click="btnCheck_Click"
+                    Margin="5"/>
+        </StackPanel>
+        <Canvas x:Name="imageCanvas"
+                    Height="auto"
+                    Background="Transparent" 
+                    MouseDown="imageCanvas_MouseDown" 
+                    MouseMove="imageCanvas_MouseMove"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="3">
+            <!-- Các phần tử khác trong Canvas -->
+        </Canvas>
+    </Grid>
+</UserControl>

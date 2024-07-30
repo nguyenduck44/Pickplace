@@ -1,0 +1,23 @@
+﻿<Window x:Class="NavigatorMachine.Views.VisionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:NavigatorMachine.Views"
+        Title="VisionTeachingWindow" Height="900" Width="1600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+            <local:VisionView x:Name="visionView" Width="1600"/>
+        </Border>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="NavigatorMachine.Controls.WorkDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NavigatorMachine.Controls"
+             xmlns:viewModels="clr-namespace:NavigatorMachine.MVVM.ViewModels"
+             xmlns:defines="clr-namespace:NavigatorMachine.Defines"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance Type=viewModels:WorkDataViewModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="150"
+             d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Label}"
+               BasedOn="{StaticResource LabelHeaderSubViewStyle}">
+            <Setter Property="Background"
+                    Value="LightGray" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Center" />
+            
+            <Setter Property="FontWeight"
+                    Value="Bold"/>
+
+            <Setter Property="IsReadOnly"
+                    Value="True" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--Label Workdata-->
+        <Label Content="DATA"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.RowSpan="1"
+               Margin="0.2"
+               Background="#bf38e5"/>
+        <!--Label Total-->
+        <Label Content="Total"
+               Margin="0.2"
+               Grid.Row="1"
+               Grid.Column="0"
+               Background="#6200ea"/>
+        <!--Label Rate ea-->
+        <Label Content="EA"
+               Background="#2eaca0"
+               Margin="0.2"
+               Grid.Row="0"
+               Grid.Column="1"
+               Grid.ColumnSpan="1"/>
+        <!--Label Rate %-->
+        <Label Content="Rate %"
+               Background="#849ca8"
+               Margin="0.2"
+               Grid.Row="0"
+               Grid.Column="2" />
+        <!--Label Workdata OK-->
+        <Label Content="Pass"
+               Background="#00800a"
+               Margin="0.2"
+               Grid.Row="2"
+               Grid.Column="0" />
+        <!--Label Workdata NG-->
+        <Label Content="Fail"
+               Background="#9c6300"
+               Margin="0.2"
+               Grid.Row="3"
+               Grid.Column="0" />
+        
+        <!--Workdata Total ea-->
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Foreground="#6200ea"
+                 Text="{Binding Source={x:Static defines:CDef.WorkData},Path=Total,Mode=OneWay,StringFormat='{}{0} EA'}" />
+
+
+        <!--Workdata rate Total %--><!--
+        <TextBox Grid.Row="1"
+                 Grid.Column="2"
+                 Foreground="#304ffe"
+                 Text="{Binding Source={x:Static defines:CDef.WorkData},Path=RatePercentTotal,Mode=OneWay,StringFormat='{}{0} %'}" />-->
+
+
+        <!--Workdata OK ea-->
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 Foreground="#00800a"
+                 Text="{Binding Source={x:Static defines:CDef.WorkData},Path=OK,Mode=OneWay,StringFormat='{}{0} EA'}" />
+
+
+        <!--Workdata rate OK %-->
+        <TextBox Grid.Row="2"
+                 Grid.Column="2"
+                 Foreground="#304ffe"
+                 Text="{Binding Source={x:Static defines:CDef.WorkData},Path=RatePercentOK,Mode=OneWay,StringFormat='{}{0} %'}" />
+
+        <!--Workdata NG ea-->
+        <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 Foreground="#9c6300"
+                 Text="{Binding Source={x:Static defines:CDef.WorkData},Path=NG,Mode=OneWay,StringFormat='{}{0} EA'}" />
+        <!--Workdata rate NG %-->
+        <TextBox Grid.Row="3"
+                 Grid.Column="2"
+                 Foreground="#304ffe"
+                 Text="{Binding Source={x:Static defines:CDef.WorkData},Path=RatePercentNG,Mode=OneWay,StringFormat='{}{0} %'}" />
+    </Grid>
+</UserControl>

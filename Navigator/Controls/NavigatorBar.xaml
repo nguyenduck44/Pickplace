@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="NavigatorMachine.Controls.NavigatorBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NavigatorMachine.Controls"
+             xmlns:viewModels="clr-namespace:NavigatorMachine.MVVM.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0"
+                Margin="0">
+            <!--Chuyển trang auto-->
+            <Button Content="Auto"
+                    CommandParameter="Auto"
+                    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                    materialDesign:ButtonProgressAssist.Value="50"
+                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                    Command="{Binding UpdateCurrentViewModelCommand}"
+                    Height="Auto"
+                    Width="Auto">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Controls/img_home.png"/>
+                </Button.Background>
+            </Button>
+        </Border>
+        <!--Chuyển trang recipe-->
+        <Border Grid.Column="2"
+                Margin="1">
+            <Button Content="RECIPE"
+                        CommandParameter="Recipe"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                        materialDesign:ButtonProgressAssist.Value="50"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Command="{Binding UpdateCurrentViewModelCommand}"
+                        Height="auto"
+                        Width="auto">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Controls/img_setting.png"/>
+                </Button.Background>
+            </Button>
+        </Border>
+        <!--Chuyển trang IO-->
+        <Border Grid.Column="4"
+                Margin="1">
+            <Button Content="IO"
+                        CommandParameter="IO"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                        materialDesign:ButtonProgressAssist.Value="50"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}" 
+                        Command="{Binding UpdateCurrentViewModelCommand}"
+                        Height="auto"
+                        Width="auto">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Controls/img_customer.png"/>
+                </Button.Background>
+            </Button>
+        </Border>
+    </Grid>
+</UserControl>

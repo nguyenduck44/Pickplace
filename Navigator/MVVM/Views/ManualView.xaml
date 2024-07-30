@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="NavigatorMachine.MVVM.Views.ManualView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NavigatorMachine.MVVM.Views"
+             xmlns:viewModels="clr-namespace:NavigatorMachine.MVVM.ViewModels"
+             xmlns:controls="clr-namespace:NavigatorMachine.Controls"
+             xmlns:defines="clr-namespace:NavigatorMachine.Defines"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance Type=viewModels:ManualViewModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type CheckBox}"
+               BasedOn="{StaticResource CheckBoxWithLeftStatusStyle}">
+            <Setter Property="Margin"
+                    Value="5"/>
+
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Left"/>
+
+            <Setter Property="FontWeight"
+                    Value="Bold"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid IsEnabled="{Binding Source={x:Static defines:CDef.RobotProcess},Path=IsRunningReverse,Mode=OneWay}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Style="{StaticResource LabelHeaderSubViewStyle}"
+               Content="Input Signal"
+               Grid.ColumnSpan="2"
+               Margin="1"/>
+
+        <Label Style="{StaticResource LabelHeaderSubViewStyle}"
+               Content="Output Signal"
+               Grid.Column="2"
+               Grid.ColumnSpan="2"
+               Margin="1"/>
+        <UniformGrid Columns="1"
+                     Rows="15"
+                     Grid.Row="1"
+                     Grid.ColumnSpan="2"
+                     Margin="0.2">
+            <CheckBox Content="IN1: Trigger From Robot"
+                      Foreground="Blue"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=InputTrigerFromRobot,Mode=OneWay}"/>
+           
+            <CheckBox Content="IN2: Vision Checking"
+                      Foreground="Blue"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=InputVisionChecking,Mode=OneWay}" />
+            
+            <CheckBox Content="IN3: Vision Inspect OK"
+                      Foreground="Blue"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=InputVisionInspectOK,Mode=OneWay}" />
+
+            <CheckBox Content="IN4: SW Control Robot"
+                      Foreground="Blue"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=Input_SWControl_Robot,Mode=OneWay}" />
+
+            <CheckBox Content="IN5: SW Reset Robot"
+                      Foreground="Blue"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=Input_SWReset_Robot,Mode=OneWay}" />
+
+            <CheckBox Content="PT_A5: No Production"
+                     Foreground="Blue"
+                     IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=Input_No_Production,Mode=OneWay}" />
+        </UniformGrid>
+
+        <UniformGrid Columns="1"
+                     Rows="15"
+                     Grid.Row="1"
+                     Grid.Column="2"
+                     Grid.ColumnSpan="2"
+                     Margin="0.2">
+            <CheckBox Content="OUT1: Trigger To Camera"
+                      Foreground="DarkRed"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=OutputTriggerVisionInspect,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+            
+            <CheckBox Content="OUT2: SW Control Robot"
+                      Foreground="DarkRed"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=Output_SWControlRobot,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  />
+            
+            <CheckBox Content="OUT3: Tower Lamp RED"
+                      Foreground="DarkRed"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=Output_TowerLampRed,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+            
+            <CheckBox Content="OUT4: Tower Lamp GREEN"
+                      Foreground="DarkRed"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=Output_TowerLampGreen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+            
+            <CheckBox Content="OUT5: Buzzer"
+                      Foreground="DarkRed"
+                      IsChecked="{Binding Source={x:Static defines:CDef.IO},Path=Output_Buzzer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </UniformGrid>
+    </Grid>
+</UserControl>

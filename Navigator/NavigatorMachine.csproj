@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>VisionInspect</AssemblyName>
+    <Configurations>Debug;Release;Simulation</Configurations>
+    <ApplicationIcon>Resource\Icons\pw.ico</ApplicationIcon>  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Simulation|AnyCPU'">
+    <DefineConstants>$(DefineConstants);Simulation</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Controls\img_customer.png" />
+    <None Remove="Controls\img_home.png" />
+    <None Remove="Controls\img_setting.png" />
+    <None Remove="Powerlogics.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\Icons\pw.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AForge.Imaging" Version="2.2.5" />
+    <PackageReference Include="AForge.Video" Version="2.2.5" />
+    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+    <PackageReference Include="CustomSelectFileDlg" Version="1.0.0" />
+    <PackageReference Include="Emgu.CV" Version="4.9.0.5494" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.9.0.5494" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
+    <PackageReference Include="log4net" Version="2.0.17" />
+    <PackageReference Include="MaterialDesignColors" Version="3.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="3.1.0" />
+    <PackageReference Include="MaterialDesignXaml.DialogsHelper" Version="1.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+    <PackageReference Include="OpenCV" Version="2.4.11" />
+    <PackageReference Include="OpenCvSharp4" Version="4.10.0.20240616" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.10.0.20240616" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20240616" />
+    <PackageReference Include="WindowsAPICodePack" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NavigatorMachine.Core\NavigatorMachine.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Controls\img_customer.png" />
+    <Resource Include="Controls\img_home.png" />
+    <Resource Include="Controls\img_setting.png" />
+    <Resource Include="Powerlogics.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\SubAutoViews\TrayView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\SubAutoViews\TaktTimeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

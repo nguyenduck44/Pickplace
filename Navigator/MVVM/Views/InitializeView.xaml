@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="NavigatorMachine.MVVM.Views.InitializeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModels="clr-namespace:NavigatorMachine.MVVM.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance Type=viewModels:InitializeViewModel}"
+             xmlns:local="clr-namespace:NavigatorMachine.MVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Text="{Binding InitString}"/>
+    </Grid>
+</UserControl>
